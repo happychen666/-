@@ -1,17 +1,18 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d.axes3d import Axes3D
-#绘制三维图像
-#转化成矩阵
-x1=np.random.randint(-150,150,size=(300,1))
-x2=np.random.randint(0,300,size=(300,1))
-#斜率和截距，随机生成
-w=np.random.randint(1,5,size=2)
-b=np.random.randint(1,10,size=1)
-y=x1*w[0]+x2*w[1]+b+np.random.randn(300,1)
-fig=plt.figure(figsize=(9,6))
-ax=Axes3D(fig)
-ax.scatter(x1,x2,y)#三维散点图
-ax.view_init(elev=10,azim=-20)#调整视角
-
-plt.show()
+from scipy import linalg
+n_components_ = 3
+X,y = datasets.load_iris(return_X_y = True)
+# 1、去中心化
+mean_ = np.mean(X, axis=0)
+X -= mean_
+# 2、奇异值分解
+U, S, Vt = linalg.svd(X, full_matrices=False)
+# 3、符号翻转（如果为负数，那么变成正直）
+max_abs_cols = np.argmax(np.abs(U), axis=0)
+signs = np.sign(U[max_abs_cols, range(U.shape[1])])
+U *= signs
+# 4、降维特征筛选
+U = U[:, :n_components_]
+# 5、归一化
+# U = (U - U.mean(axis = 0))/U.std(axis = 0)
+U *= np.sqrt(X.shape[0] - 1)
+U[:5]

@@ -33,5 +33,5 @@ plt.title("Comparison of Principal Components Before and After Sign Adjustment")
 plt.xlabel("X-axis")
 plt.ylabel("Y-axis")
 
-# 显示图形
-plt.show()
+# 显示图形   
+plt.show() 
