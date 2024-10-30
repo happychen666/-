@@ -33,4 +33,8 @@ def cross_entropy_error(y, t):
              
     batch_size = y.shape[0]
 
+    # np.log(...)方法返回的是新数组
     return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
+
+
+# y[np.arange(batch_size), t]这段代码的解释见同级目录下的
