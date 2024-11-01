@@ -1,3 +1,5 @@
+import numpy as np
+
 def softmax(x):
     if x.ndim == 2:
         x = x - x.max(axis=1, keepdims=True)
