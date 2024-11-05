@@ -32,17 +32,17 @@ class TimeRNN:
         D, H = Wx.shape
 
         dxs = np.empty((N, T, D), dtype='f')
-        ipdb.set_trace()
+        # ipdb.set_trace()
         dh = 0
         grads = [0, 0, 0]
         for t in reversed(range(T)):
             layer = self.layers[t]
             dx, dh = layer.backward(dhs[:, t, :] + dh)
             dxs[:, t, :] = dx
-            ipdb.set_trace()
+            # ipdb.set_trace()
             for i, grad in enumerate(layer.grads):
                 grads[i] += grad
-                ipdb.set_trace()
+                # ipdb.set_trace()
 
         for i, grad in enumerate(grads):
             self.grads[i][...] = grad

@@ -163,7 +163,7 @@ class Embedding:
 
     def backward(self, dout):
         dW, = self.grads
-        dW[...] = 0
+        dW[...] = 0 #dW[...] = 0 将 dW（即全零矩阵）重置为全零，确保每次进行反向传播时梯度是清零的。
         if GPU:
             np.scatter_add(dW, self.idx, dout)
         else:
