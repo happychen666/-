@@ -162,7 +162,7 @@ class Embedding:
         return out
 
     def backward(self, dout):
-        print('embedding===',dout)
+        # print('embedding===',dout)
         dW, = self.grads
         dW[...] = 0 #dW[...] = 0 将 dW（即全零矩阵）重置为全零，确保每次进行反向传播时梯度是清零的。
         if GPU:
