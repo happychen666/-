@@ -1,3 +1,5 @@
+import numpy as np
+
 class RNN:
     def __init__(self, Wx, Wh, b):
         self.params = [Wx, Wh, b]
@@ -28,3 +30,6 @@ class RNN:
         self.grads[2][...] = db
 
         return dx, dh_prev
+    
+
+    
